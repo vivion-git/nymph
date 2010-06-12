@@ -2,5 +2,6 @@
 find ./ -exec grep "git" {} \; -print
 
 find . | grep -i ""
-find . | grep "" -i
 
+find . | grep "" -i
+#an important command
