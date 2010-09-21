@@ -1,0 +1,29 @@
+this is my test:
+
+    import vi
+    I can understand
+    >>> dir(vi)
+    ['__builtins__', '__doc__', '__file__', '__name__', '__package__', 'f1']
+    >>> print vi._doc_
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    AttributeError: 'module' object has no attribute '_doc_'
+    >>> print vi.f1_doc_
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    AttributeError: 'module' object has no attribute 'f1_doc_'
+    >>> vim vi      
+      File "<stdin>", line 1
+        vim vi  
+             ^
+    SyntaxError: invalid syntax
+    >>> print vi.__file__
+    vi.pyc
+    >>> print vi.f1.__doc__
+    this is a document
+    >>> print vi.f1.__name__
+    f1
+
+when we use the module,first ,we should import this module,and then we can
+invoke it ."dir"used to check the information of the module ."__doc__"used to
+check the docstring.to mind that the formate of using "__doc__".

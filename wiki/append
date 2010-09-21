@@ -1,0 +1,13 @@
+note :about the function append and sort ,we should know that the two function
+can change operation like the list.append and list.sort,do not return the
+values.It's not uncommon for beginners to say something like
+mylist=mylist.append(x)to try to get the result of an append,but what this
+actually does is assign mylist to none,not to the modified list .
+
+>>> list=[1,2,3]
+>>> list.append(4)  #this statement can't be wrotten as "list=list.append(4)"
+>>> print list
+[1, 2, 3, 4]
+sort is the same use to append ,like list.sort().
+
+
