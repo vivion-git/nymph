@@ -1,0 +1,42 @@
+*******************
+I will extract the base knowleage and import use in function ,loop,module and
+so on ,to write them in this file in order to emphasis them and remind me to
+use them correctly in my programms.
+**********************
+1)module and function
+a.use the function:len()to count the lines and characters in a file.
+def countlines(filename):
+    f=open(filename)
+    return len(f.readlines())   #count the lines in a file
+
+def countchars(filename):         #count the characters in a file
+     f=open(filename)
+     return len(f.read())
+
+def test(filename):
+    return countchars(filename)
+#when we use the programm ,first ,we use it as a module,so we should import it
+in the first ,and then we can use the attribute test to self-test .also ,we
+can run it by invoking the function countlines() and countchars()
+
+b.anther way to write a programm to count the lines and the characters ,using
+for loop to complete it.
+
+def countlines(filename):
+    f=open(filename)
+    count=0
+    for line in f.readlines():
+        count=count+1
+    print count
+
+
+def countchars (filename):
+    count=0
+    for word in open(filename).read():
+        count +=1
+    print count
+countlines('add.py')
+countchars('add.py') 
+
+to compare the two programm ,we can see using module to complete the task is
+very easy and fast. 
