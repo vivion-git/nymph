@@ -27,3 +27,10 @@ this is my test:
 when we use the module,first ,we should import this module,and then we can
 invoke it ."dir"used to check the information of the module ."__doc__"used to
 check the docstring.to mind that the formate of using "__doc__".
+
+**about reload()
+reload is always used with the"import",first ,import module and then make some
+changes in module file ,and reload it .but if you use "from"statement ,there
+will be some complex things to think about .so ,you should not expect reload
+and from to play together nicely.
+** 
