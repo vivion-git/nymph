@@ -39,4 +39,23 @@ countlines('add.py')
 countchars('add.py') 
 
 to compare the two programm ,we can see using module to complete the task is
-very easy and fast. 
+very easy and fast.
+
+2)**//how to use the function map,filter,and list comprehensions //**
+
+many methods to build a new list containing the square roots of all the
+numbers in this list:
+1.use the list comprehensions:[x**2 for x in range(6) if x>1]
+2.>>> map((lambda x:x**2),range(2,6))
+[4, 9, 16, 25]
+3.>>> for x in range(2,6):
+...     x=x**2
+...     print x
+...
+4
+9
+16
+25
+
+three methods can be used to resolve this question.
+~                                                             
