@@ -12,8 +12,8 @@ class listadder(adder):
         return self.data+y
 
 class dictadder(adder):
+    def __init__(self,new={}):
+        self.new=new    
     def add(self,y):
-        new={}
-        for k in y.keys:new[k]=y[k]
-        for k in self.keys:new[k]=self[k]
-        return new
+        self.new.updata(y)
+        return self.add(y)
