@@ -1,0 +1,58 @@
+__repr__:(and __str__) is called automatically when class instances are
+printed or converted to strings.this method allow you to define a better
+display for your objects than the default instance display.
+>>>class addrepr(adder):
+        def __repr__(self):
+            return 'addrepr(%s)' %self.data
+__getattr__and __setattr__:intercepts attribute qualifications.it's called
+with the attribute name as a string whenever you try to qualify an instance
+with an undefined attribute name.
+>>>class empty:
+        def __gerattr__(self,attrname):
+            if attrname=='age':
+                return=40
+>>>x.age
+>>>40
+multiple inheritance
+you can provide a __repr__ method to implement a custom string representation
+of your own.but ,rather than coding a __repr__in each and every class you wish
+to print ,why not code it once in a general-purpose tool class and inheritance
+it in all your classes?
+here ,we can create a class named lister:lister can be mixed into any class to
+provide a formatted print of instances via inheritance of __repr__code
+here;self is the instance of the lowest class.
+>>>class lister:
+        def __repr__(self):
+            return ("<instance of %s,address %s:\n%s"
+%(self.__class__.__name__,id(self),self.attrnames()))
+        def attrnames(self):
+            result = ''
+            for attr in self.__dict__.keys():
+                if attr[:2]=='__'
+                    result =result +"\tname %s=<built-in>\n"%attr
+                else:
+                    result =result +"\tname %s=%s\n %
+(attr,self.__dict__[attr])
+            return result
+
+the lister class is useful for any classes you write--even classes that
+already have a superclass.for example:
+>>>from mytools import lister
+>>>class super:
+        def __init__(self):
+            self.data1="spam"
+>>>class sub(super,lister):
+        def __init__(self):
+            super.__init__(self)
+            self.data2="eggs"
+            self.data3="42
+>>>if __name__="__main__":
+        x=sub()
+        print x
+>>><instance of sub,address 7833392:
+        name data3=42
+        name data2=eggs
+        name data2=spam
+>
+
+
