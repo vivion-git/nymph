@@ -58,7 +58,10 @@ got oops.myerro myerror.value is hello
  #disply the result of the function sys.exc_type:oops.myerro ;disply the
 result of the function sys.exc_value:myerror.value is hello 
 
-sys.exc_type:
+If I use the function sys.exc_info()[0] and sys.exc_info()[1] instead of
+sys.exc_type and sys.exc_value ,the result is the same.
+
+
 another import thing I should know that not using the keyword to name the file
 ,if that,I will not import the module succesfully,there will be error
 displayed.for exmple:

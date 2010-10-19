@@ -5,7 +5,7 @@ def safe(entry,*args):
          apply(entry,args)
     except:
          traceback.print_exc()
-         print 'got',sys.exc_type,sys.exc_value
+         print 'got',sys.exc_info()[0],sys.exc_info()[1]
 import oops 
 safe(oops.oops)
 
