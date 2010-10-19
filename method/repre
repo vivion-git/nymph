@@ -54,5 +54,4 @@ already have a superclass.for example:
         name data2=eggs
         name data2=spam
 >
-
-
+note:the format %s ,not write the s%(this is wrong format).very important.

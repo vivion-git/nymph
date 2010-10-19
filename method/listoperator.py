@@ -19,7 +19,7 @@ class mylist:
     def __repr__(self):
         return repr(self.wrapped)
 
-if __name__='__main__':
+if __name__ == '__main__':
     x=mylist('spam')
     print x
     print x[2]
