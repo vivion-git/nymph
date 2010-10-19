@@ -34,3 +34,37 @@ changes in module file ,and reload it .but if you use "from"statement ,there
 will be some complex things to think about .so ,you should not expect reload
 and from to play together nicely.
 ** 
+----------------------
+note:run the file safe.py
+import sys, traceback
+def safe(entry,*args):
+    try:
+         apply(entry,args)
+    except:
+         traceback.print_exc()
+         print 'got',sys.exc_type,sys.exc_value
+import oops
+safe(oops.oops)
+
+when I run the file (safe.py),the result is down:
+vivion@vivion-laptop:~/nymph/misc$ python safe.py
+Traceback (most recent call last):
+  File "safe.py", line 5, in safe
+    apply(entry,args)
+  File "/home/vivion/nymph/misc/oops.py", line 8, in oops
+    raise  myerro('hello')
+myerro: myerror.value is hello        #the result of the function :traceback.print_exc()
+got oops.myerro myerror.value is hello   
+ #disply the result of the function sys.exc_type:oops.myerro ;disply the
+result of the function sys.exc_value:myerror.value is hello 
+
+sys.exc_type:
+another import thing I should know that not using the keyword to name the file
+,if that,I will not import the module succesfully,there will be error
+displayed.for exmple:
+File "error.py", line 9
+    import except
+                ^
+SyntaxError: invalid syntax
+"except"is a keyword ,so there is an error information.change the file name
+,it will be right.
