@@ -30,3 +30,36 @@ if __name__ == '__main__':
     x.sort()
     for c in x: print c
 
+
+built-in methods
+---------------------------------
+pprint :The pprint module provides a capability to “pretty-print” arbitrary
+Python data structures in a form which can
+be used as input to the interpreter. If the formatted structures include
+objects which are not fundamental Python
+types, the representation may not be loadable. This may be the case if objects
+such as files, sockets, classes, or
+instances are included, as well as many other builtin objects which are not
+representable as Python constants.
+
+pprint(object[, stream[, indent[, width[, depth ]]]])
+    Prints the formatted representation of object on stream, followed by a
+newline. If stream is omitted,
+    sys.stdout is used. This may be used in the interactive interpreter
+instead of a print statement for in-
+    specting values. indent, width and depth will be passed to the
+PrettyPrinter constructor as formatting
+    parameters.
+           >>> stuff = sys.path[:]
+           >>> stuff.insert(0, stuff)
+           >>> pprint.pprint(stuff)
+           [<Recursion on list with id=869440>,
+             ’’,
+             ’/usr/local/lib/python1.5’,
+             ’/usr/local/lib/python1.5/test’,
+             ’/usr/local/lib/python1.5/sunos5’,
+             ’/usr/local/lib/python1.5/sharedmodules’,
+             ’/usr/local/lib/python1.5/tkinter’]
+
+
+
