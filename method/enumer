@@ -1,0 +1,90 @@
+python enumerate() ,how to use the founction enumerate:
+在for循环中得到计数:for exmple
+参数为可遍历的变量，如 字符串，列表等；返回值为enumerate类：
+
+import string
+s = string.ascii_lowercase
+e = enumerate(s)
+print s
+print list(e)
+
+输出为：
+
+abcdefghij
+[(0, 'a'), (1, 'b'), (2, 'c'), (3, 'd'), (4, 'e'), (5, 'f'), (6, 'g'), (7,
+'h'), (8, 'i'), (9, 'j')]
+
+在同时需要index和value值的时候可以使用 enumerate。
+
+
+Now let's go over some useful utility functions:
+
+      import os.path
+      # os.path - The key to File I/O
+      os.path.exists("bob.txt")
+      os.path.isfile("bob.txt") # Does bob.txt exist?  Is it a file, or a
+directory?
+      os.path.isdir("bob")
+      os.path.isabs("/home/me/bob.txt") # Is it an absolute path to this file?
+
+      # Creating cross platform paths
+      # This will be slightly different on each platform
+      currentdir = os.curdir
+      imagedir = os.path.join(currentdir, "images")
+
+      # Let's say I have a full path, and yet I want to store records based
+      # on the name of the file:
+      longpath = "/home/me/python/somefiles/junk/notjunk/blah/bingo.txt"
+      shortpath = os.path.basename(longpath)
+
+      # Get the type of shortpath:
+      print "Type of",shortpath,"is", os.path.splitext(shortpath)[1]
+
+      # os.path.walk can be used to traverse directories recursively
+      # to apply changes to a whole tree of files.
+      def callback( arg, dirname, fnames ):
+          sum = 0
+          for file in fnames:
+              sum += os.path.getsize(file)
+          arg.append(sum)
+
+      arglist = []
+      os.path.walk("./",callback,arglist)
+
+      sum = 0
+      for value in arglist:
+          sum += value
+
+      print "Size of directory:",sum
+
+string methods
+
+str.endswith(suffix[, start[, end]])¶
+
+    Return True if the string ends with the specified suffix, otherwise return
+False. suffix can also be a tuple of suffixes to look for. With optional
+start, test beginning at that position. With optional end, stop comparing at
+that position.
+
+str.split([sep[, maxsplit]])¶
+
+    Return a list of the words in the string, using sep as the delimiter
+string. If maxsplit is given, at most maxsplit splits are done (thus, the list
+will have at most maxsplit+1 elements). If maxsplit is not specified, then
+there is no limit on the number of splits (all possible splits are made).
+
+    If sep is given, consecutive delimiters are not grouped together and are
+deemed to delimit empty strings (for example, '1,,2'.split(',') returns ['1',
+'', '2']). The sep argument may consist of multiple characters (for example,
+'1<>2<>3'.split('<>') returns ['1', '2', '3']). Splitting an empty string with
+a specified separator returns [''].
+
+os.path.normpath(path)¶
+
+    Normalize a pathname. This collapses redundant separators and up-level
+references so that A//B, A/B/, A/./B and A/foo/../B all become A/B.
+
+    It does not normalize the case (use normcase() for that). On Windows, it
+converts forward slashes to backward slashes. It should be understood that
+this may change the meaning of the path if it contains symbolic links!
+
