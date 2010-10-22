@@ -1,0 +1,27 @@
+I'll to explain this right:
+I'm in an environment where I can't use python built-in functions (like
+'sorted', 'set'), can't declare methods, can't make conditions (if), and can't
+make loops, except for:
+
+    *
+
+      can call methods (but just one each time, and saving returns on another
+variable
+
+      foo python:item.sort(); #foo variable takes the value that item.sort()
+returns
+
+      bar python:foo.index(x);
+    *
+
+      and can do list comprehension
+
+      [item['bla'] for item in foo]
+
+...what I don't think that will help on this question
+
+I have a 'correct_order' list, with this values:
+
+correct_order = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+
