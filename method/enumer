@@ -146,3 +146,12 @@ mport sys
   31.     for filename in sys.argv[1:]:
 #当参数为文件名时，传入readfile，读出其内容  
   32.         readfile(filename)  
+
+
+os.popen() behaves similar to a file open(), the default is "r" for read, so
+for write to have to addd a "w". You can specify the buffer size in bytes or
+use the default of zero.
+   1.
+      import os
+   2.
+      os.popen('program').write('whatever')
