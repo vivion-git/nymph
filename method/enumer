@@ -88,3 +88,61 @@ references so that A//B, A/B/, A/./B and A/foo/../B all become A/B.
 converts forward slashes to backward slashes. It should be understood that
 this may change the meaning of the path if it contains symbolic links!
 
+           sys — System-specific parameters and functions
+This module provides access to some variables used or maintained by the
+interpreter and to functions that interact
+strongly with the interpreter. It is always available.
+argv
+      The list of command line arguments passed to a Python script. argv[0] is
+the script name (it is operating
+      system dependent whether this is a full pathname or not). If the command
+was executed using the -c
+      command line option to the interpreter, argv[0] is set to the string
+’-c’. If no script name was passed
+      to the Python interpreter, argv has zero length.
+
+           sys — System-specific parameters and functions
+This module provides access to some variables used or maintained by the
+interpreter and to functions that interact
+strongly with the interpreter. It is always available.
+argv
+      The list of command line arguments passed to a Python script. argv[0] is
+the script name (it is operating
+      system dependent whether this is a full pathname or not). If the command
+was executed using the -c
+      command line option to the interpreter, argv[0] is set to the string
+’-c’. If no script name was passed
+      to the Python interpreter, argv has zero length.
+mport sys  
+   2. def readfile(filename):  #从文件中读出文件内容  
+   3.     '''''Print a file to the standard output.'''  
+   4.     f = file(filename)  
+   5.     while True:  
+   6.         line = f.readline()  
+   7.         if len(line) == 0:  
+   8.             break  
+   9.         print line, # notice comma  分别输出每行内容  
+  10.     f.close()  
+  11. # Script starts from here  
+  12. if len(sys.argv) < 2:  
+  13.     print 'No action specified.'  
+  14.     sys.exit()  
+  15. if sys.argv[1].startswith('--'):  
+  16.     option = sys.argv[1][2:]  
+  17.     # fetch sys.argv[1] but without the first two characters  
+  18.     if option == 'version':  #当命令行参数为-- version，显示版本号  
+  19.         print 'Version 1.2'  
+  20.     elif option == 'help':  #当命令行参数为--help时，显示相关帮助内容  
+  21.         print '''''\ 
+  22. This program prints files to the standard output. 
+  23. Any number of files can be specified. 
+  24. Options include: 
+  25.   --version : Prints the version number 
+  26.   --help    : Display this help'''  
+  27.     else:  
+  28.         print 'Unknown option.'  
+  29.     sys.exit()  
+  30. else:  
+  31.     for filename in sys.argv[1:]:
+#当参数为文件名时，传入readfile，读出其内容  
+  32.         readfile(filename)  
