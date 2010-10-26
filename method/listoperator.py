@@ -62,4 +62,14 @@ PrettyPrinter constructor as formatting
              ’/usr/local/lib/python1.5/tkinter’]
 
 
-
+rstrip()  :  remove the end-of-line
+line
+'spam\n'
+line.rstrip()
+'spam'
+split()  :  split(parse) on commas
+line
+['43,44,45\n']
+parts=line.split(',')
+parts
+['43','44','45\n']
