@@ -35,4 +35,25 @@ load(file)
 data stream, reconstructing and
     returning the original object hierarchy. This is equivalent to
 Unpickler(file).load()
+% python
+>>> import pickle
+>>> mydb  = open('dbase', 'r')
+>>> table = pickle.load(mydb)
+>>> table
+{'b': ['spam', 'eggs'], 'a': [1, 2, 3], 'c': {'name': 'bob'}}
+
+% python
+>>> import pickle
+>>> f = open('temp', 'w')
+>>> x = ['Hello', ('pickle', 'world')]           # list with nested tuple
+>>> pickle.dump(x, f)
+>>> f.close( )                                   # close to flush changes
+>>>
+>>> f = open('temp', 'r')
+>>> y = pickle.load(f)
+>>> y
+['Hello', ('pickle', 'world')]
+>>>
+>>> x == y, x is y
+(True, False)
 
