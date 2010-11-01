@@ -57,3 +57,13 @@ Unpickler(file).load()
 >>> x == y, x is y
 (True, False)
 
+getattr() 
+Python’s getattr function is used to fetch an attribute from an object, using
+a string object instead of an identifier to identify the attribute. In other
+words, the following two statements are equivalent:
+
+value = obj.attribute
+value = getattr(obj, "attribute")
+
+If the attribute exists, the corresponding value is returned. If the attribute
+does not exist, you get an AttributeError exception instead
