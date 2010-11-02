@@ -1,0 +1,39 @@
+about tkMessageBox :
+1)  The tkMessageBox module is used to display message boxes in your
+applications. This module provides a number of functions that you can use to
+display an appropriate message.
+
+Some of these functions are showinfo, showwarning, showerror, askquestion,
+askokcancel, askyesno, and askretryignore.
+Syntax:
+
+Here is the simple syntax to create this widget:
+
+tkMessageBox.FunctionName(title, message [, options])
+
+Parameters:
+
+
+      FunctionName: This is the name of the appropriate message box function.
+
+      title: This is the text to be displayed in the title bar of a message
+box.
+
+      message: This is the text to be displayed as a message.
+
+      options: options are alternative choices that you may use to tailor a
+standard message box. Some of the options that you can use are default and
+parent. The default option is used to specify the default button, such as
+ABORT, RETRY, or IGNORE in the message box. The parent option is used to
+specify the window on top of which the message box is to be displayed.
+
+about TKinter :
+Tkinter Widgets:
+
+Tkinter provides various controls, such as buttons, labels, and text boxes,
+used in a GUI application. These controls are commonly called widgets.
+
+There are currently 15 types of widgets in Tkinter. We present these widgets
+as well as a brief description in the following table:
+
+command :Function or method to be called when the button is clicked. 
