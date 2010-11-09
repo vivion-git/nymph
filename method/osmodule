@@ -1,0 +1,41 @@
+about the three listing techniques,'os.popen' and 'glob.glob' and
+'os.listdir',how to use them and how to distinct them .
+1)os.popen:
+>>> os.popen('ls *.html').readlines( )
+['about-pp.html\n', 'about-pp2e.html\n', 'about-ppr2e.html\n']
+sorts names and returns end-of-lines.
+2)glob.glob:
+>>> import glob
+>>> glob.glob('*')
+['about-pp.html', 'python1.5.tar.gz', 'about-pp2e.html', 'about-ppr2e.html',
+'newdir']
+
+>>> glob.glob('*.html')
+['about-pp.html', 'about-pp2e.html', 'about-ppr2e.html']
+
+>>> glob.glob('newdir/*')
+['newdir\\temp1', 'newdir\\temp2', 'newdir\\temp3', 'newdir\\more']
+>>> for name in glob.glob(r'*\*\visitor_find*.py'): print name
+...
+cpexamples\PyTools\visitor_find.py
+cpexamples\PyTools\visitor_find_quiet2.py
+cpexamples\PyTools\visitor_find_quiet1.py
+examples\PyTools\visitor_find.py
+examples\PyTools\visitor_find_quiet2.py
+examples\PyTools\visitor_find_quiet1.py
+
+accepts a pattern('*') and returns filenames with directory prefixes
+
+
+3)os.listdir:
+>>> os.listdir('.')
+['about-pp.html', 'python1.5.tar.gz', 'about-pp2e.html', 'about-ppr2e.html',
+'newdir']
+
+>>> os.listdir(os.curdir)
+['about-pp.html', 'python1.5.tar.gz', 'about-pp2e.html', 'about-ppr2e.html',
+'newdir']
+
+>>> os.listdir('newdir')
+['temp1', 'temp2', 'temp3', 'more']
+ takes a simple directory name and returns names without directory prefixes
