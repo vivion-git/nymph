@@ -39,3 +39,32 @@ accepts a pattern('*') and returns filenames with directory prefixes
 >>> os.listdir('newdir')
 ['temp1', 'temp2', 'temp3', 'more']
  takes a simple directory name and returns names without directory prefixes
+
+****there are three method ,compare their result and distinct them.****
+print open('sta.py').read()
+x=5
+l=[]
+for i in range(7):
+    l.append(2**i)
+print l    
+if (2**x) in l:
+    print (2**x),'was found',l.index(2**x)
+else:
+    print x,'not found'
+
+when we use the file method,the result is reading the context of the file.
+
+use the os.system is running the file and display the result.
+>>> import os
+>>> os.system('python sta.py')
+[1, 2, 4, 8, 16, 32, 64]
+32 was found 5
+
+use the os.popen is also running the file but can not display the result ,if
+we want to display the result ,use print and read().
+>>> result=os.popen('python sta.py').read()
+>>> print result
+[1, 2, 4, 8, 16, 32, 64]
+32 was found 5
+
+
