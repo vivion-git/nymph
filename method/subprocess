@@ -1,0 +1,122 @@
+subprocess模块中只定义了一个类:
+Popen。可以使用Popen来创建进程，并与进程进行复杂的交互。它的构造函数如下：
+
+subprocess.Popen(args, bufsize=0, executable=None, stdin=None, stdout=None,
+stderr=None, preexec_fn=None, close_fds=False, shell=False, cwd=None,
+env=None, universal_newlines=False, startupinfo=None, creationflags=0)
+
+
+　　参数args可以是字符串或者序列类型（如：list，元组），用于指定进程的可执行文件及其参数。如果是序列类型，第一个元素通常是可执行文件的路径。我们也可以显式的使用executeable参数来指定可执行文件的路径。在windows操作系统上，Popen通过调用
+CreateProcess()来创建子进程,CreateProcess接收一个字符串参数，如果args是序列类型，系统将会通过
+list2cmdline()函数将序列类型转换为字符串。
+　　参数bufsize：指定缓冲。我到现在还不清楚这个参数的具体含义，望各个大牛指点。
+　　参数executable用于指定可执行程序。一般情况下我们通过args参数来设置所要运行的程序。如果将参数shell设为True，executable将指定程序使用的shell。在windows平台下，默认的shell由COMSPEC环境变量来指定。
+　　参数stdin, stdout,
+stderr分别表示程序的标准输入、输出、错误句柄。他们可以是PIPE，文件描述符或文件对象，也可以设置为None，表示从父进程继承。
+　　参数preexec_fn只在Unix平台下有效，用于指定一个可执行对象（callable
+object），它将在子进程运行之前被调用。
+　　参数Close_sfs：在windows平台下，如果close_fds被设置为True，则新创建的子进程将不会继承父进程的输入、输出、错误管道。我们不能将close_fds设置为True同时重定向子进程的标准输入、输出与错误(stdin,
+stdout, stderr)。
+　　如果参数shell设为true，程序将通过shell来执行。
+　　参数cwd用于设置子进程的当前目录。
+　　参数env是字典类型，用于指定子进程的环境变量。如果env =
+None，子进程的环境变量将从父进程中继承。
+　　参数Universal_newlines:不同操作系统下，文本的换行符是不一样的。如：windows下用'\r\n'表示换，而Linux下用'\n'。如果将此参数设置为True，Python统一把这些换行符当作'\n'来处理。
+　　参数startupinfo与createionflags只在windows下用效，它们将被传递给底层的CreateProcess()函数，用于设置子进程的一些属性，如：主窗口的外观，进程的优先级等等。
+
+subprocess.PIPE
+　　在创建Popen对象时，subprocess.PIPE可以初始化stdin,
+stdout或stderr参数。表示与子进程通信的标准流。
+
+subprocess.STDOUT
+　　创建Popen对象时，用于初始化stderr参数，表示将错误通过标准输出流输出。
+
+Popen的方法：
+
+Popen.poll()
+　　用于检查子进程是否已经结束。设置并返回returncode属性。
+
+Popen.wait()
+　　等待子进程结束。设置并返回returncode属性。
+
+Popen.communicate(input=None)
+　　与子进程进行交互。向stdin发送数据，或从stdout和stderr中读取数据。可选参数input指定发送到子进程的参数。
+Communicate()返回一个元组：(stdoutdata,
+stderrdata)。注意：如果希望通过进程的stdin向其发送数据，在创建Popen对象的时候，参数stdin必须被设置为PIPE。同样，如果希望从stdout和stderr获取数据，必须将stdout和stderr设置为PIPE。
+
+Popen.send_signal(signal)
+　　向子进程发送信号。
+
+Popen.terminate()
+　　停止(stop)子进程。在windows平台下，该方法将调用Windows API
+TerminateProcess（）来结束子进程。
+
+Popen.kill()
+　　杀死子进程。
+
+Popen.stdin
+　　如果在创建Popen对象是，参数stdin被设置为PIPE，Popen.stdin将返回一个文件对象用于策子进程发送指令。否则返回None。
+
+Popen.stdout
+　　如果在创建Popen对象是，参数stdout被设置为PIPE，Popen.stdout将返回一个文件对象用于策子进程发送指令。否则返回None。
+
+Popen.stderr
+　　如果在创建Popen对象是，参数stdout被设置为PIPE，Popen.stdout将返回一个文件对象用于策子进程发送指令。否则返回None。
+
+Popen.pid
+　　获取子进程的进程ID。
+
+Popen.returncode
+　　获取进程的返回值。如果进程还没有结束，返回None。
+
+ 下面是一个非常简单的例子，来演示supprocess模块如何与一个控件台应用程序进行交互。
+
+ 
+
+   1. import subprocess     
+   2.     
+   3. p = subprocess.Popen("app2.exe", stdin = subprocess.PIPE, \     
+   4.     stdout = subprocess.PIPE, stderr = subprocess.PIPE, shell = False)     
+   5.     
+   6. p.stdin.write('3\n')     
+   7. p.stdin.write('4\n')     
+   8. print p.stdout.read()     
+   9.     
+  10. #---- 结果 ----     
+  11. input x:      
+  12. input y:      
+  13. 3 + 4 = 7    
+
+ 
+
+app2.exe也是一个非常简单的控制台程序，它从界面上接收两个数值，执行加操作，并将结果打印到控制台上。代码如下：
+
+ 
+
+   1. #include <iostream>     
+   2. using namespace std;     
+   3.     
+   4. int main(int argc, const char *artv[])     
+   5. {     
+   6.     int x, y;     
+   7.     cout << "input x: " << endl;     
+   8.     cin >> x;     
+   9.     cout << "input y: " << endl;     
+  10.     cin >> y;     
+  11.     cout << x << " + " << y << " = " << x + y << endl;     
+  12.     
+  13.     return 0;     
+  14. }    
+
+ 
+
+supprocess模块提供了一些函数，方便我们用于创建进程。
+
+subprocess.call(*popenargs, **kwargs)
+　　运行命令。该函数将一直等待到子进程运行结束，并返回进程的returncode。文章一开始的例子就演示了call函数。如果子进程不需要进行交互,就可以使用该函数来创建。
+
+subprocess.check_call(*popenargs, **kwargs)
+　　与subprocess.call(*popenargs,
+**kwargs)功能一样，只是如果子进程返回的returncode不为0的话，将触发CalledProcessError异常。在异常对象中，包括进程的returncode信息。
+
+ 
