@@ -14,3 +14,7 @@ root =Tk()
 Button(root,text='popup',command=dialog).pack()
 root.mainloop()
 
+note:behind the if ,there are three
+functions,win.focus_set(),win.grab_set()and win.wait_window(),the three
+functions will lock other windows and waiting for a reply ,making the dialogs
+modal.
