@@ -23,3 +23,7 @@ we can write the def function instead of lambda:
 for (key,value) in demos.items():
     def func(key=key): self.printit(key)
 lambda is very import in widget .
+lambda is used in Button,when the command call the
+function(command=fuctionname(argument),if the function has argument,use the
+lambda,if the function has no argument,you can use(command=function).lambda
+make the command function to run with the argument.
